@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season's Greetings!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h1>Season's Greetings!</h1>
+            <p>My Guy how far na! put your name make you see wetin i get for you:</p>
+            <input type="text" id="name-input" placeholder="Enter your name" required>
+            <button id="generate-btn">Enter</button>
+        </div>
+
+        <div class="present-container" style="display: none;">
+            <div class="present">
+                <div class="lid"></div>
+                <div class="box"></div>
+                <div class="ribbon"></div>
+                <div class="bow"></div>
+            </div>
+            <p class="instruction">Tap the present to see your message!</p>
+        </div>
+    </div>
+
+    <div class="message-container">
+        <div class="message">
+            <h1>Merry Christmas & a Happy New Year!</h1>
+            <p id="personalized-message">Wishing you all the best for the new year. May it be full of joy, laughter, and success.</p>
+            <p>With love,</p>
+            <p>Michael Adetoyese<br> {lone-DEV}</p>
+        </div>
+    </div>
+
+    <div class="bubbles-container"></div>
+
+    <footer>
+        <div id="real-time-clock"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

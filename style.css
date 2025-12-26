@@ -1,0 +1,283 @@
+:root {
+  --present-size: 30vmin;
+  --base-font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(to right top, #a8dadc, #457b9d, #1d3557);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #333;
+    font-size: var(--base-font-size);
+}
+
+.input-section {
+    background: linear-gradient(135deg, #f1faee, #a8dadc);
+    padding: 3em;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    color: #1d3557;
+}
+
+#name-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+#generate-btn {
+    background-color: #e63946;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#generate-btn:hover {
+    background-color: #d63031;
+}
+
+.present-container {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.present-container:hover {
+    transform: scale(1.05);
+}
+
+.present {
+    position: relative; /* Changed from absolute */
+    width: var(--present-size);
+    height: var(--present-size);
+    /* Removed top, left, transform for centering by parent */
+    margin: 0 auto; /* Center it within present-container */
+}
+
+.lid {
+    position: absolute;
+    top: 0;
+    left: calc(var(--present-size) * 0.05);
+    width: calc(var(--present-size) * 0.9);
+    height: calc(var(--present-size) * 0.2);
+    background-color: #e63946;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.box {
+    position: absolute;
+    top: calc(var(--present-size) * 0.2);
+    left: 0;
+    width: var(--present-size);
+    height: calc(var(--present-size) * 0.8);
+    background-color: #f1faee;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ribbon {
+    position: absolute;
+    top: 0;
+    left: calc(50% - (var(--present-size) * 0.075));
+    width: calc(var(--present-size) * 0.15);
+    height: 100%;
+    background-color: #ffbe0b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.bow {
+    position: absolute;
+    top: calc(var(--present-size) * -0.1);
+    left: calc(50% - (var(--present-size) * 0.125));
+    width: calc(var(--present-size) * 0.25);
+    height: calc(var(--present-size) * 0.25);
+    background-color: #ffbe0b;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.bow::before,
+.bow::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--present-size) * 0.15);
+    height: calc(var(--present-size) * 0.15);
+    background-color: #ffbe0b;
+    border-radius: 50%;
+}
+
+.bow::before {
+    top: calc(var(--present-size) * -0.05);
+    left: calc(var(--present-size) * -0.1);
+}
+
+.bow::after {
+    top: calc(var(--present-size) * -0.05);
+    left: calc(var(--present-size) * 0.2);
+}
+
+.instruction {
+    margin-top: 1em; /* Reduced margin */
+    font-size: 1.5em;
+    color: #f1faee;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.message-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 1rem;
+}
+
+.message {
+    background: linear-gradient(135deg, #f1faee, #a8dadc);
+    padding: 2.5em;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    color: #1d3557;
+    position: relative;
+    z-index: 101;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.message h1 {
+    color: #e63946;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.message p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 99;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: rise 10s infinite;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --base-font-size: 14px;
+  }
+  .message {
+    padding: 2em;
+  }
+  .message h1 {
+    font-size: 2em;
+  }
+  .message p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --present-size: 40vmin;
+    --base-font-size: 12px;
+  }
+  .instruction {
+      font-size: 1.3em;
+  }
+  .message {
+    padding: 1.5em;
+    max-width: 95%;
+  }
+  .message h1 {
+      font-size: 1.8em;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  :root {
+
+    --base-font-size: 18px;
+
+  }
+
+}
+
+
+
+footer {
+
+    position: fixed;
+
+    bottom: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 10px;
+
+    color: #f1faee;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+#real-time-clock {
+
+    font-size: 1.2em;
+
+    margin: 0;
+
+}
